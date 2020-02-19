@@ -4,27 +4,44 @@ def merge( arrA, arrB ):
     # merged_arr = [0] * elements
     merged_arr = []
     # TO-DO
-    is_sorted = False
+    # Keep looping while one of the arrays has elements
     while len(arrA) or len(arrB):
-        # print(f'arrA: {arrA}')
-        # print(f'arrB: {arrB}')
+        # Check for arrA to be empty
         if not len(arrA):
-            # print('arrA empty')
+            # If arrA empty, add all of arrB to the new_array.
+            # This will also have the effect of ending whte while loop.
             merged_arr.extend(arrB)
             arrB = []
+
+        # Check for arrB to be empty
         elif not len(arrB):
-            # print('arrB empty')
+            # If arrB empty, add all of arrA to the new_array.
+            # This will also have the effect of ending whte while loop.
             merged_arr.extend(arrA)
             arrA = []
+
+        # If the first element of A is bigger than the first element of B,
+        # pop it off and add it to the new array.
         elif arrA[0] < arrB[0]:
-            # print('arrA[0] < arrB[0]')
             el = arrA.pop(0)
             merged_arr.append(el)
+
+        # If the first elements of each array are equal, add them both
+        # to the new array, going from left to right.
+        # Commented out because I think this might result in an unstable sort.
+        # elif arrA[0] == arrB[0]:
+        #     el1 = arrA.pop(0)
+        #     merged_arr.append(el1)
+        #     el2 = arrB.pop(0)
+        #     merged_arr.append(el2)
+
+        # If the first element of B is bigger than the first element of A,
+        # pop it off and add it to the new array.
         else:
-            # print('arrA[0] > arrB[0]')
             el = arrB.pop(0)
             merged_arr.append(el)
 
+    # Once the while loop has terminated, return the new array. 
     return merged_arr
 
 
